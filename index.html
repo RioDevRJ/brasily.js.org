@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brasily JS - Documentação</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Highlight.js CSS (Tema Atom One Dark) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <!-- Estilos Customizados -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+    .header-bg {
+      background: linear-gradient(135deg, #009639, #FFCC29);
+      color: #fff;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    /* Banner para o CDN */
+    .banner-cdn {
+      margin-bottom: 2rem;
+    }
+    .banner-cdn .card {
+      background: linear-gradient(45deg, #1abc9c, #16a085);
+      border: none;
+    }
+    .banner-cdn .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+    /* Accordion: cabeçalhos com fundo escuro e texto branco */
+    .accordion-button {
+      background-color: #34495e !important;
+      color: #ecf0f1 !important;
+      font-weight: bold;
+      border: none;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #2c3e50 !important;
+      color: #ecf0f1 !important;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+    }
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+    .accordion-body {
+      background-color: #ffffff;
+      color: #212529;
+    }
+    .section-title {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    /* Blocos de código estilo VS Code dark */
+    pre {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem;
+      border-radius: 5px;
+      font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+    }
+    footer {
+      background-color: #343a40;
+      color: #ccc;
+      padding: 1rem 0;
+      margin-top: 3rem;
+      text-align: center;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #009639;">
+    <div class="container">
+      <a class="navbar-brand" href="#">Brasily JS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+              aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#inputs">Inputs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#elements">Elementos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#classes">Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#atributos">Atributos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#eventos">Eventos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#buscas">Buscas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#requisicoes">Requisições</a></li>
+          <li class="nav-item"><a class="nav-link" href="#validacoes">Validações</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dados">Dados</a></li>
+          <li class="nav-item"><a class="nav-link" href="#functionBuilder">Function Builder</a></li>
+          <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header-bg">
+    <div class="container">
+      <h1>Documentação da Brasily JS</h1>
+      <p class="lead">
+       Brasily JS é uma biblioteca JavaScript leve e intuitiva, que une a elegância das cores vibrantes do Brasil a uma abordagem minimalista para desenvolvimento web. Ela oferece um conjunto robusto de funções para manipulação de DOM, validação de dados, requisições AJAX e muito mais – tornando o desenvolvimento de aplicações web rápido e eficiente.</p>
+    </div>
+  </header>
+
+  <!-- Banner para CDN -->
+  <div class="container banner-cdn">
+    <div class="card text-white shadow">
+      <div class="card-body d-flex justify-content-between align-items-center flex-column flex-md-row">
+        <h5 class="card-title mb-2 mb-md-0">Use Brasily JS via CDN</h5>
+        <div class="input-group w-100 w-md-50">
+          <input id="cdnLink" type="text" class="form-control" value="https://cdn.jsdelivr.net/gh/RioDevRJ/Brasily/brasily.min.js" readonly>
+          <button class="btn btn-light" type="button" onclick="copyCDN()">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="container">
+    
+    <!-- Seção: Funções de Input -->
+    <section id="inputs">
+      <h2 class="section-title">Funções de Input</h2>
+      <div class="accordion" id="accordion-inputs">
+
+        <!-- inputVal -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-inputVal">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-inputVal" aria-expanded="false" aria-controls="collapse-inputVal">
+              inputVal(seletor)
+            </button>
+          </h2>
+          <div id="collapse-inputVal" class="accordion-collapse collapse" aria-labelledby="heading-inputVal" data-bs-parent="#accordion-inputs">
+            <div class="accordion-body">
+              <p>Retorna o valor do primeiro elemento encontrado pelo seletor informado.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) – Seletor CSS.</li>
+                <li><strong>Retorno:</strong> Valor (<code>string</code>) do primeiro elemento encontrado.</li>
+              </ul>
+              <pre><code class="html">const valor = br.inputVal('#meuInput');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- inputValues -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-inputValues">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-inputValues" aria-expanded="false" aria-controls="collapse-inputValues">
+              inputValues(seletor)
+            </button>
+          </h2>
+          <div id="collapse-inputValues" class="accordion-collapse collapse" aria-labelledby="heading-inputValues" data-bs-parent="#accordion-inputs">
+            <div class="accordion-body">
+              <p>Retorna um array com os valores de todos os elementos encontrados pelo seletor.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Array de valores (<code>Array</code>).</li>
+              </ul>
+              <pre><code class="js">const valores = br.inputValues('.inputs');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- inputClean -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-inputClean">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-inputClean" aria-expanded="false" aria-controls="collapse-inputClean">
+              inputClean(seletor = 'input,select')
+            </button>
+          </h2>
+          <div id="collapse-inputClean" class="accordion-collapse collapse" aria-labelledby="heading-inputClean" data-bs-parent="#accordion-inputs">
+            <div class="accordion-body">
+              <p>Limpa os valores dos elementos do tipo <code>input</code> ou <code>select</code> encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string, opcional); padrão: <code>'input,select'</code>.</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.inputClean();
+br.inputClean('.meus-campos');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- inputAutoComplete -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-inputAutoComplete">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-inputAutoComplete" aria-expanded="false" aria-controls="collapse-inputAutoComplete">
+              inputAutoComplete(v = false)
+            </button>
+          </h2>
+          <div id="collapse-inputAutoComplete" class="accordion-collapse collapse" aria-labelledby="heading-inputAutoComplete" data-bs-parent="#accordion-inputs">
+            <div class="accordion-body">
+              <p>Desativa o autocomplete de todos os elementos <code>input</code> se o parâmetro for <code>false</code>.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>v</code> (boolean, opcional); padrão: <code>false</code>.</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.inputAutoComplete();
+br.inputAutoComplete(true);</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Manipulação de Elementos -->
+    <section id="elements">
+      <h2 class="section-title">Manipulação de Elementos</h2>
+      <div class="accordion" id="accordion-elements">
+
+        <!-- element -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-element">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-element" aria-expanded="false" aria-controls="collapse-element">
+              element(seletor)
+            </button>
+          </h2>
+          <div id="collapse-element" class="accordion-collapse collapse" aria-labelledby="heading-element" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Retorna o primeiro elemento encontrado utilizando o seletor informado.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Elemento (<code>HTMLElement</code>).</li>
+              </ul>
+              <pre><code class="html">const el = br.element('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- elements -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-elements">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-elements" aria-expanded="false" aria-controls="collapse-elements">
+              elements(seletor)
+            </button>
+          </h2>
+          <div id="collapse-elements" class="accordion-collapse collapse" aria-labelledby="heading-elements" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Retorna um array com os valores de todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Array de valores.</li>
+              </ul>
+              <pre><code class="js">const todosValores = br.elements('.inputs');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- addHTML -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-addHTML">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-addHTML" aria-expanded="false" aria-controls="collapse-addHTML">
+              addHTML(seletor, conteudo)
+            </button>
+          </h2>
+          <div id="collapse-addHTML" class="accordion-collapse collapse" aria-labelledby="heading-addHTML" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Substitui o <code>innerHTML</code> dos elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>conteudo</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="html">br.addHTML('.minha-div', '&lt;p&gt;Olá Mundo&lt;/p&gt;');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- removeHTML -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-removeHTML">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-removeHTML" aria-expanded="false" aria-controls="collapse-removeHTML">
+              removeHTML(seletor)
+            </button>
+          </h2>
+          <div id="collapse-removeHTML" class="accordion-collapse collapse" aria-labelledby="heading-removeHTML" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Remove o conteúdo (<code>innerHTML</code>) dos elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="html">br.removeHTML('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- getHTML -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-getHTML">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getHTML" aria-expanded="false" aria-controls="collapse-getHTML">
+              getHTML(seletor)
+            </button>
+          </h2>
+          <div id="collapse-getHTML" class="accordion-collapse collapse" aria-labelledby="heading-getHTML" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Retorna o conteúdo (<code>innerHTML</code>) do primeiro elemento encontrado.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> <code>string</code>.</li>
+              </ul>
+              <pre><code class="html">const conteudo = br.getHTML('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- addNextHTML -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-addNextHTML">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-addNextHTML" aria-expanded="false" aria-controls="collapse-addNextHTML">
+              addNextHTML(seletor, conteudo)
+            </button>
+          </h2>
+          <div id="collapse-addNextHTML" class="accordion-collapse collapse" aria-labelledby="heading-addNextHTML" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Acrescenta o conteúdo informado ao final do <code>innerHTML</code> dos elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>conteudo</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="html">br.addNextHTML('.minha-div', '&lt;p&gt;Texto Adicional&lt;/p&gt;');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- clone -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-clone">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-clone" aria-expanded="false" aria-controls="collapse-clone">
+              clone(seletor)
+            </button>
+          </h2>
+          <div id="collapse-clone" class="accordion-collapse collapse" aria-labelledby="heading-clone" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Retorna uma cópia profunda do primeiro elemento encontrado.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Elemento clonado (<code>HTMLElement</code>).</li>
+              </ul>
+              <pre><code class="js">const copia = br.clone('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- getUrl -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-getUrl">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getUrl" aria-expanded="false" aria-controls="collapse-getUrl">
+              getUrl()
+            </button>
+          </h2>
+          <div id="collapse-getUrl" class="accordion-collapse collapse" aria-labelledby="heading-getUrl" data-bs-parent="#accordion-elements">
+            <div class="accordion-body">
+              <p>Retorna um objeto contendo os parâmetros da URL atual.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> Nenhum.</li>
+                <li><strong>Retorno:</strong> Objeto (<code>{ chave: valor, ... }</code>).</li>
+              </ul>
+              <pre><code class="js">const params = br.getUrl();</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Manipulação de Classes -->
+    <section id="classes">
+      <h2 class="section-title">Manipulação de Classes</h2>
+      <div class="accordion" id="accordion-classes">
+        
+        <!-- addClass -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-addClass">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-addClass" aria-expanded="false" aria-controls="collapse-addClass">
+              addClass(seletor, classe)
+            </button>
+          </h2>
+          <div id="collapse-addClass" class="accordion-collapse collapse" aria-labelledby="heading-addClass" data-bs-parent="#accordion-classes">
+            <div class="accordion-body">
+              <p>Adiciona a classe CSS especificada a todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>classe</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.addClass('.minha-div', 'ativa');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- removeClass -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-removeClass">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-removeClass" aria-expanded="false" aria-controls="collapse-removeClass">
+              removeClass(seletor, classe)
+            </button>
+          </h2>
+          <div id="collapse-removeClass" class="accordion-collapse collapse" aria-labelledby="heading-removeClass" data-bs-parent="#accordion-classes">
+            <div class="accordion-body">
+              <p>Remove a classe CSS especificada de todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>classe</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.removeClass('.minha-div', 'ativa');</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Manipulação de Atributos -->
+    <section id="atributos">
+      <h2 class="section-title">Manipulação de Atributos</h2>
+      <div class="accordion" id="accordion-atributos">
+        
+        <!-- getAtributte -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-getAtributte">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getAtributte" aria-expanded="false" aria-controls="collapse-getAtributte">
+              getAtributte(seletor, atributo)
+            </button>
+          </h2>
+          <div id="collapse-getAtributte" class="accordion-collapse collapse" aria-labelledby="heading-getAtributte" data-bs-parent="#accordion-atributos">
+            <div class="accordion-body">
+              <p>Retorna o valor do atributo especificado do primeiro elemento encontrado.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>atributo</code> (string).</li>
+                <li><strong>Retorno:</strong> Valor do atributo (string).</li>
+              </ul>
+              <pre><code class="html">const alt = br.getAtributte('img', 'alt');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- removeAtributte -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-removeAtributte">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-removeAtributte" aria-expanded="false" aria-controls="collapse-removeAtributte">
+              removeAtributte(seletor, atributo)
+            </button>
+          </h2>
+          <div id="collapse-removeAtributte" class="accordion-collapse collapse" aria-labelledby="heading-removeAtributte" data-bs-parent="#accordion-atributos">
+            <div class="accordion-body">
+              <p>Remove o atributo especificado de todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>atributo</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="html">br.removeAtributte('.minha-div', 'data-info');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- addAtributte -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-addAtributte">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-addAtributte" aria-expanded="false" aria-controls="collapse-addAtributte">
+              addAtributte(seletor, atributo, valor)
+            </button>
+          </h2>
+          <div id="collapse-addAtributte" class="accordion-collapse collapse" aria-labelledby="heading-addAtributte" data-bs-parent="#accordion-atributos">
+            <div class="accordion-body">
+              <p>Define o atributo informado com o valor especificado para todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string), <code>atributo</code> (string) e <code>valor</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="html">br.addAtributte('.minha-div', 'title', 'Minha Div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Manipulação de Eventos -->
+    <section id="eventos">
+      <h2 class="section-title">Manipulação de Eventos</h2>
+      <div class="accordion" id="accordion-eventos">
+        
+        <!-- event -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-event">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-event" aria-expanded="false" aria-controls="collapse-event">
+              event(seletor, evento, callback)
+            </button>
+          </h2>
+          <div id="collapse-event" class="accordion-collapse collapse" aria-labelledby="heading-event" data-bs-parent="#accordion-eventos">
+            <div class="accordion-body">
+              <p>Adiciona um listener para o evento especificado a todos os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string), <code>evento</code> (string) e <code>callback</code> (function).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.event('.botao', 'click', () => { alert('Clicou!'); });</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- removeEvent -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-removeEvent">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-removeEvent" aria-expanded="false" aria-controls="collapse-removeEvent">
+              removeEvent(seletor, evento, callback)
+            </button>
+          </h2>
+          <div id="collapse-removeEvent" class="accordion-collapse collapse" aria-labelledby="heading-removeEvent" data-bs-parent="#accordion-eventos">
+            <div class="accordion-body">
+              <p>Remove o listener do evento especificado dos elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string), <code>evento</code> (string) e <code>callback</code> (function).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.removeEvent('.botao', 'click', minhaFuncao);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- hide -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-hide">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-hide" aria-expanded="false" aria-controls="collapse-hide">
+              hide(seletor)
+            </button>
+          </h2>
+          <div id="collapse-hide" class="accordion-collapse collapse" aria-labelledby="heading-hide" data-bs-parent="#accordion-eventos">
+            <div class="accordion-body">
+              <p>Oculta os elementos encontrados definindo seu display como "none".</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.hide('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- show -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-show">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-show" aria-expanded="false" aria-controls="collapse-show">
+              show(seletor)
+            </button>
+          </h2>
+          <div id="collapse-show" class="accordion-collapse collapse" aria-labelledby="heading-show" data-bs-parent="#accordion-eventos">
+            <div class="accordion-body">
+              <p>Exibe os elementos encontrados definindo seu display como "block".</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.show('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- toggle -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-toggle">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-toggle" aria-expanded="false" aria-controls="collapse-toggle">
+              toggle(seletor)
+            </button>
+          </h2>
+          <div id="collapse-toggle" class="accordion-collapse collapse" aria-labelledby="heading-toggle" data-bs-parent="#accordion-eventos">
+            <div class="accordion-body">
+              <p>Alterna entre exibir e ocultar os elementos encontrados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string).</li>
+                <li><strong>Retorno:</strong> Nenhum.</li>
+              </ul>
+              <pre><code class="js">br.toggle('.minha-div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Busca de Elementos -->
+    <section id="buscas">
+      <h2 class="section-title">Busca de Elementos</h2>
+      <div class="accordion" id="accordion-buscas">
+        
+        <!-- find -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-find">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-find" aria-expanded="false" aria-controls="collapse-find">
+              find(seletor, busca)
+            </button>
+          </h2>
+          <div id="collapse-find" class="accordion-collapse collapse" aria-labelledby="heading-find" data-bs-parent="#accordion-buscas">
+            <div class="accordion-body">
+              <p>Busca um elemento interno a partir do primeiro elemento encontrado pelo seletor e aplica um seletor de busca.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>seletor</code> (string) e <code>busca</code> (string – seletor interno).</li>
+                <li><strong>Retorno:</strong> Primeiro elemento que corresponder à busca.</li>
+              </ul>
+              <pre><code class="js">const filho = br.find('.pai', '.filho');</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Requisições -->
+    <section id="requisicoes">
+      <h2 class="section-title">Requisições</h2>
+      <div class="accordion" id="accordion-requisicoes">
+        
+        <!-- getJson -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-getJson">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-getJson" aria-expanded="false" aria-controls="collapse-getJson">
+              getJson(url, callback)
+            </button>
+          </h2>
+          <div id="collapse-getJson" class="accordion-collapse collapse" aria-labelledby="heading-getJson" data-bs-parent="#accordion-requisicoes">
+            <div class="accordion-body">
+              <p>Realiza uma requisição GET para a URL informada e retorna os dados JSON através de um callback.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>url</code> (string) e <code>callback</code> (function).</li>
+                <li><strong>Retorno:</strong> Nenhum (os dados são passados para o callback).</li>
+              </ul>
+              <pre><code class="js">
+br.getJson('https://api.exemplo.com/dados', (data) => {
+  console.log(data);
+});
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- postJson -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-postJson">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-postJson" aria-expanded="false" aria-controls="collapse-postJson">
+              postJson(url, cabecalhos, dados, callback)
+            </button>
+          </h2>
+          <div id="collapse-postJson" class="accordion-collapse collapse" aria-labelledby="heading-postJson" data-bs-parent="#accordion-requisicoes">
+            <div class="accordion-body">
+              <p>Realiza uma requisição POST enviando dados JSON e retorna a resposta via callback.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong>
+                  <ul>
+                    <li><code>url</code> (string)</li>
+                    <li><code>cabecalhos</code> (object)</li>
+                    <li><code>dados</code> (object)</li>
+                    <li><code>callback</code> (function)</li>
+                  </ul>
+                </li>
+                <li><strong>Retorno:</strong> Nenhum (os dados são passados para o callback).</li>
+              </ul>
+              <pre><code class="js">
+br.postJson('https://api.exemplo.com/salvar', 
+  { 'Authorization': 'Bearer token' },
+  { nome: 'Teste' },
+  (data) => {
+    console.log(data);
+});
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Validações -->
+    <section id="validacoes">
+      <h2 class="section-title">Validações de Dados</h2>
+      <div class="accordion" id="accordion-validacoes">
+        
+        <!-- isString -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isString">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isString" aria-expanded="false" aria-controls="collapse-isString">
+              isString(valor)
+            </button>
+          </h2>
+          <div id="collapse-isString" class="accordion-collapse collapse" aria-labelledby="heading-isString" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor informado é uma string não nula.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const resultado = br.isString('teste');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- isInt -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isInt">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isInt" aria-expanded="false" aria-controls="collapse-isInt">
+              isInt(valor)
+            </button>
+          </h2>
+          <div id="collapse-isInt" class="accordion-collapse collapse" aria-labelledby="heading-isInt" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor é um número inteiro.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (number).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const inteiro = br.isInt(10);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- isFloat -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isFloat">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isFloat" aria-expanded="false" aria-controls="collapse-isFloat">
+              isFloat(valor)
+            </button>
+          </h2>
+          <div id="collapse-isFloat" class="accordion-collapse collapse" aria-labelledby="heading-isFloat" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor é um número float.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (number).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const flutuante = br.isFloat(10.5);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- isJson -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isJson">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isJson" aria-expanded="false" aria-controls="collapse-isJson">
+              isJson(valor)
+            </button>
+          </h2>
+          <div id="collapse-isJson" class="accordion-collapse collapse" aria-labelledby="heading-isJson" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor é do tipo objeto (JSON).</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const ehJson = br.isJson({ chave: 'valor' });</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- isBool -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isBool">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isBool" aria-expanded="false" aria-controls="collapse-isBool">
+              isBool(valor)
+            </button>
+          </h2>
+          <div id="collapse-isBool" class="accordion-collapse collapse" aria-labelledby="heading-isBool" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor é do tipo boolean.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const ehBool = br.isBool(true);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- isNull & isUndefined -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-isNullUndefined">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-isNullUndefined" aria-expanded="false" aria-controls="collapse-isNullUndefined">
+              isNull(valor) &amp; isUndefined(valor)
+            </button>
+          </h2>
+          <div id="collapse-isNullUndefined" class="accordion-collapse collapse" aria-labelledby="heading-isNullUndefined" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Verifica se o valor não é nulo/undefined.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">
+const naoNulo = br.isNull('teste');
+const definido = br.isUndefined('teste');
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outras Validações -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-outros">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-outros" aria-expanded="false" aria-controls="collapse-outros">
+              Outras Validações
+            </button>
+          </h2>
+          <div id="collapse-outros" class="accordion-collapse collapse" aria-labelledby="heading-outros" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Funções para verificar:</p>
+              <ul>
+                <li><code>isObject(valor)</code> – se é um objeto.</li>
+                <li><code>isDocument(valor)</code> – se é uma instância de Document.</li>
+                <li><code>isDoble(valor)</code> – se é um número (double).</li>
+                <li><code>isFunction(valor)</code> – se é uma função.</li>
+                <li><code>isElement(valor)</code> – se é um elemento DOM.</li>
+                <li><code>isEvent(valor)</code> – se é um evento.</li>
+                <li><code>isNodeList(valor)</code> – se é um NodeList.</li>
+                <li><code>isHTMLCollection(valor)</code> – se é uma HTMLCollection.</li>
+                <li>Funções específicas para elementos HTML, como <code>isHTMLInputElement</code>, etc.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validações de Formato -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-formatos">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-formatos" aria-expanded="false" aria-controls="collapse-formatos">
+              Validações de Formato
+            </button>
+          </h2>
+          <div id="collapse-formatos" class="accordion-collapse collapse" aria-labelledby="heading-formatos" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <ul>
+                <li><code>isEmail(valor)</code> – valida e-mail.</li>
+                <li><code>isCep(valor)</code> – valida CEP (XXXXX-XXX).</li>
+                <li><code>isCpf(valor)</code> – valida CPF (XXX.XXX.XXX-XX).</li>
+                <li><code>isCnpj(valor)</code> – valida CNPJ (XX.XXX.XXX/XXXX-XX).</li>
+                <li><code>isTel(valor)</code> – valida telefone ((XX) XXXX-XXXX ou (XX) XXXXX-XXXX).</li>
+                <li><code>isDate(valor)</code> – valida data (dd/mm/yyyy).</li>
+                <li><code>isHr(valor)</code> – valida hora (hh:mm).</li>
+                <li><code>isDateHr(valor)</code> – valida data e hora (dd/mm/yyyy hh:mm).</li>
+                <li><code>isUrl(valor)</code> – valida URL.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testes: testCpf, testCnpj e testUrl -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-testes">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-testes" aria-expanded="false" aria-controls="collapse-testes">
+              testCpf(valor), testCnpj(valor) e testUrl(valor)
+            </button>
+          </h2>
+          <div id="collapse-testes" class="accordion-collapse collapse" aria-labelledby="heading-testes" data-bs-parent="#accordion-validacoes">
+            <div class="accordion-body">
+              <p>Valida números de CPF e CNPJ e testa se uma URL é válida.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">
+const cpfValido = br.testCpf('123.456.789-09');
+const cnpjValido = br.testCnpj('12.345.678/0001-95');
+const urlValida = br.testUrl('https://exemplo.com');
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Manipulação de Dados -->
+    <section id="dados">
+      <h2 class="section-title">Manipulação de Dados</h2>
+      <div class="accordion" id="accordion-dados">
+        
+        <!-- parseJson -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseJson">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseJson" aria-expanded="false" aria-controls="collapse-parseJson">
+              parseJson(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseJson" class="accordion-collapse collapse" aria-labelledby="heading-parseJson" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte uma string JSON em um objeto.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string JSON).</li>
+                <li><strong>Retorno:</strong> Objeto JavaScript.</li>
+              </ul>
+              <pre><code class="json">const obj = br.parseJson('{"chave": "valor"}');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseString -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseString">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseString" aria-expanded="false" aria-controls="collapse-parseString">
+              parseString(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseString" class="accordion-collapse collapse" aria-labelledby="heading-parseString" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte um valor em uma string JSON.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> <code>string</code>.</li>
+              </ul>
+              <pre><code class="json">const jsonStr = br.parseString({ chave: "valor" });</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseFloat -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseFloat">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseFloat" aria-expanded="false" aria-controls="collapse-parseFloat">
+              parseFloat(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseFloat" class="accordion-collapse collapse" aria-labelledby="heading-parseFloat" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para um número float.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string ou number).</li>
+                <li><strong>Retorno:</strong> Número (float).</li>
+              </ul>
+              <pre><code class="js">const num = br.parseFloat("10.5");</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseInt -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseInt">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseInt" aria-expanded="false" aria-controls="collapse-parseInt">
+              parseInt(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseInt" class="accordion-collapse collapse" aria-labelledby="heading-parseInt" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para um número inteiro.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string ou number).</li>
+                <li><strong>Retorno:</strong> Número (int).</li>
+              </ul>
+              <pre><code class="js">const inteiro = br.parseInt("10");</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseBool -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseBool">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseBool" aria-expanded="false" aria-controls="collapse-parseBool">
+              parseBool(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseBool" class="accordion-collapse collapse" aria-labelledby="heading-parseBool" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para boolean.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Boolean.</li>
+              </ul>
+              <pre><code class="js">const boolVal = br.parseBool(1);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseArray -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseArray">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseArray" aria-expanded="false" aria-controls="collapse-parseArray">
+              parseArray(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseArray" class="accordion-collapse collapse" aria-labelledby="heading-parseArray" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para um array utilizando <code>Array.from()</code>.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (iterable ou array-like).</li>
+                <li><strong>Retorno:</strong> Array.</li>
+              </ul>
+              <pre><code class="js">const arr = br.parseArray('texto');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseObject -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseObject">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseObject" aria-expanded="false" aria-controls="collapse-parseObject">
+              parseObject(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseObject" class="accordion-collapse collapse" aria-labelledby="heading-parseObject" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor em um objeto utilizando <code>Object.assign()</code>.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (qualquer).</li>
+                <li><strong>Retorno:</strong> Objeto.</li>
+              </ul>
+              <pre><code class="js">const obj = br.parseObject({ a: 1 });</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseDate -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseDate">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseDate" aria-expanded="false" aria-controls="collapse-parseDate">
+              parseDate(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseDate" class="accordion-collapse collapse" aria-labelledby="heading-parseDate" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para um objeto <code>Date</code>.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string ou number).</li>
+                <li><strong>Retorno:</strong> Objeto <code>Date</code>.</li>
+              </ul>
+              <pre><code class="js">const data = br.parseDate("2025-02-12");</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseDoble -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseDoble">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseDoble" aria-expanded="false" aria-controls="collapse-parseDoble">
+              parseDoble(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseDoble" class="accordion-collapse collapse" aria-labelledby="heading-parseDoble" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte o valor para um número (double). (Nota: pode ser uma variação de "parseDouble")</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string ou number).</li>
+                <li><strong>Retorno:</strong> Número.</li>
+              </ul>
+              <pre><code class="js">const numDouble = br.parseDoble("10.5");</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseFunction -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseFunction">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseFunction" aria-expanded="false" aria-controls="collapse-parseFunction">
+              parseFunction(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseFunction" class="accordion-collapse collapse" aria-labelledby="heading-parseFunction" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Converte uma string em uma função.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string – código da função).</li>
+                <li><strong>Retorno:</strong> Função.</li>
+              </ul>
+              <pre><code class="js">const func = br.parseFunction("return 2+2");</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- parseElement -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-parseElement">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parseElement" aria-expanded="false" aria-controls="collapse-parseElement">
+              parseElement(valor)
+            </button>
+          </h2>
+          <div id="collapse-parseElement" class="accordion-collapse collapse" aria-labelledby="heading-parseElement" data-bs-parent="#accordion-dados">
+            <div class="accordion-body">
+              <p>Cria e retorna um novo elemento DOM com a tag especificada.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong> <code>valor</code> (string – nome da tag, ex.: 'div').</li>
+                <li><strong>Retorno:</strong> Elemento DOM.</li>
+              </ul>
+              <pre><code class="html">const novaDiv = br.parseElement('div');</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: Function Builder -->
+    <section id="functionBuilder">
+      <h2 class="section-title">Function Builder</h2>
+      <div class="accordion" id="accordion-functionBuilder">
+        
+        <!-- function -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-functionBuilder">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-functionBuilder" aria-expanded="false" aria-controls="collapse-functionBuilder">
+              function(callback, returnType, paramTypes = [], debug = false)
+            </button>
+          </h2>
+          <div id="collapse-functionBuilder" class="accordion-collapse collapse" aria-labelledby="heading-functionBuilder" data-bs-parent="#accordion-functionBuilder">
+            <div class="accordion-body">
+              <p>Retorna uma nova função que valida os tipos dos argumentos e do retorno conforme especificados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong>
+                  <ul>
+                    <li><code>callback</code> (function) – função a ser executada.</li>
+                    <li><code>returnType</code> (string) – tipo esperado de retorno (ex.: 'string', 'int', etc.).</li>
+                    <li><code>paramTypes</code> (Array) – tipos esperados para os argumentos.</li>
+                    <li><code>debug</code> (boolean, opcional) – ativa mensagens de erro detalhadas.</li>
+                  </ul>
+                </li>
+                <li><strong>Retorno:</strong> Função validada.</li>
+              </ul>
+              <pre><code class="js">
+const funcValida = br.function(
+  (a, b) => a + b,
+  'int',
+  ['int', 'int'],
+  true
+);
+const resultado = funcValida(10, 20); // Retorna 30
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção: API Request -->
+    <section id="api">
+      <h2 class="section-title">API Request</h2>
+      <div class="accordion" id="accordion-api">
+        
+        <!-- api -->
+        <div class="accordion-item mb-2">
+          <h2 class="accordion-header" id="heading-api">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-api" aria-expanded="false" aria-controls="collapse-api">
+              api(url, method = 'GET', headers = {}, body = null, callback = null)
+            </button>
+          </h2>
+          <div id="collapse-api" class="accordion-collapse collapse" aria-labelledby="heading-api" data-bs-parent="#accordion-api">
+            <div class="accordion-body">
+              <p>Realiza uma requisição assíncrona utilizando <code>fetch</code> e retorna uma Promise com um array contendo o status e os dados.</p>
+              <ul>
+                <li><strong>Parâmetros:</strong>
+                  <ul>
+                    <li><code>url</code> (string) – URL para a requisição.</li>
+                    <li><code>method</code> (string, opcional) – método HTTP (padrão: 'GET').</li>
+                    <li><code>headers</code> (object, opcional) – cabeçalhos adicionais.</li>
+                    <li><code>body</code> (object, opcional) – dados a serem enviados (para métodos diferentes de GET).</li>
+                    <li><code>callback</code> (function, opcional) – função que recebe (status, data).</li>
+                  </ul>
+                </li>
+                <li><strong>Retorno:</strong> Promise que resolve para um array <code>[status, data]</code>.</li>
+              </ul>
+              <pre><code class="js">
+(async () => {
+  const [status, data] = await br.api('https://api.exemplo.com', 'GET');
+  console.log(status, data);
+})();
+              </code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 Brasily JS. Todos os direitos reservados.</p>
+      <p class="small">
+        Desenvolvido com paixão e dedicação. <a href="https://riodev.com.br" target="_blank">Conheça o projeto</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS e dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <!-- Função para copiar o link do CDN -->
+  <script>
+    function copyCDN() {
+      const cdnInput = document.getElementById('cdnLink');
+      cdnInput.select();
+      cdnInput.setSelectionRange(0, 99999); // Para dispositivos móveis
+      navigator.clipboard.writeText(cdnInput.value)
+        .then(() => {
+          alert('Link copiado para a área de transferência!');
+        })
+        .catch(err => {
+          alert('Erro ao copiar o link.');
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>
